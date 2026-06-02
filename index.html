@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="description" content="NOVA - Dunyodagi eng kuchli super ilova. Instagram, Facebook, YouTube, Twitter, WhatsApp va 50+ platformani birlashtiruvchi universal ijtimoiy media hub. Bosh Creator: Mirfayz Nova Creator">
+    <meta name="keywords" content="Nova, ijtimoiy tarmoq, video, reels, layk, obuna, galichka, Mirfayz, Creator, Instagram, Facebook, YouTube, Twitter, WhatsApp">
+    <meta name="author" content="Mirfayz Nova Creator">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="manifest" href="manifest.json">
+    <title>NOVA – Mirfayz Creator | Dunyodagi eng kuchli super ilova</title>
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <style>
+        /* ============================================ */
+        /* NOVA - QORA, OQ, QIZIL DIZAYN */
+        /* ============================================ */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #ff0000;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cc0000;
+        }
+        
+        /* ===== ASOSIY KONTAINER ===== */
+        #app {
+            display: flex;
+            min-height: 100vh;
+            background: #000000;
+            position: relative;
+        }
+        
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 280px;
+            background: #0a0a0a;
+            border-right: 1px solid #ff000020;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .sidebar-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ff000030;
+        }
+        
+        .nova-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #ff0000);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nova-logo i {
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: #ff0000;
+        }
+        
+        .close-sidebar {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+        
+        /* Creator Info */
+        .creator-info {
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            border-bottom: 1px solid #ff000020;
+            background: linear-gradient(135deg, #0a0a0a, #1a0000);
+        }
+        
+        .creator-avatar {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+        
+        .creator-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid #ff0000;
+            object-fit: cover;
+        }
+        
+        .crown-animation {
+            position: absolute;
+            bottom: -8px;
+            right: -8px;
+            font-size: 20px;
+            animation: crownSpin 2s infinite;
+        }
+        
+        @keyframes crownSpin {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(15deg); }
+        }
+        
+        .creator-details h4 {
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        
+        .verified-badge {
+            color: #ff0000;
+            font-size: 14px;
+        }
+        
+        .creator-badge {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+        
+        .creator-details p {
+            font-size: 12px;
+            color: #ff0000;
+            margin-top: 5px;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 15px;
+            margin-top: 8px;
+            font-size: 12px;
+            color: #888;
+        }
+        
+        /* Navigatsiya */
+        .sidebar-nav {
+            padding: 20px 0;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 24px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .nav-item:hover {
+            background: #ff000010;
+            border-left-color: #ff0000;
+        }
+        
+        .nav-item.active {
+            background: #ff000020;
+            border-left-color: #ff0000;
+            color: #ff0000;
+        }
+        
+        .nav-item i {
+            width: 24px;
+            font-size: 20px;
+        }
+        
+        /* Premium tugma */
+        .sidebar-footer {
+            padding: 20px;
+            border-top: 1px solid #ff000020;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .premium-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+        
+        .premium-btn:hover {
+            transform: scale(1.02);
+        }
+        
+        /* ===== ASOSIY KONTENT ===== */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            max-width: calc(100% - 680px);
+            padding: 0 20px;
+        }
+        
+        /* Top Bar */
+        .top-bar {
+            position: sticky;
+            top: 0;
+            background: #000000cc;
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            border-bottom: 1px solid #ff000020;
+        }
+        
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .search-bar {
+            flex: 1;
+            max-width: 400px;
+            display: flex;
+            align-items: center;
+            background: #1a1a1a;
+            border-radius: 25px;
+            padding: 10px 18px;
+            gap: 10px;
+            border: 1px solid #ff000030;
+        }
+        
+        .search-bar i {
+            color: #ff0000;
+        }
+        
+        .search-bar input {
+            background: none;
+            border: none;
+            color: #ffffff;
+            outline: none;
+            width: 100%;
+        }
+        
+        .search-bar input::placeholder {
+            color: #666;
+        }
+        
+        .top-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .top-icons i {
+            font-size: 22px;
+            cursor: pointer;
+            transition: color 0.3s;
+            color: #ffffff;
+        }
+        
+        .top-icons i:hover {
+            color: #ff0000;
+        }
+        
+        /* Stories */
+        .stories-container {
+            padding: 20px 0;
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+        
+        .story-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            min-width: 75px;
+        }
+        
+        .story-ring {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff0000, #ffffff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .story-img {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #000000;
+        }
+        
+        .story-name {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        /* Feed */
+        .feed-container {
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .post-card {
+            background: #0a0a0a;
+            border-radius: 16px;
+            border: 1px solid #ff000020;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-2px);
+            border-color: #ff000060;
+        }
+        
+        .post-header {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .post-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .post-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .post-user-info h4 {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .post-time {
+            font-size: 11px;
+            color: #666;
+        }
+        
+        .post-menu {
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        .post-media {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            background: #111;
+        }
+        
+        .post-actions {
+            padding: 12px 15px;
+            display: flex;
+            gap: 20px;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+        
+        .action-btn:hover {
+            color: #ff0000;
+        }
+        
+        .action-btn.liked {
+            color: #ff0000;
+        }
+        
+        .post-stats {
+            padding: 12px 15px;
+            font-size: 13px;
+            color: #888;
+        }
+        
+        .post-caption {
+            padding: 0 15px 12px;
+            font-size: 14px;
+        }
+        
+        .post-comments {
+            padding: 0 15px 12px;
+            color: #666;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        
+        .comment-input {
+            padding: 12px 15px;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid #1a1a1a;
+        }
+        
+        .comment-input input {
+            flex: 1;
+            background: #1a1a1a;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 15px;
+            color: #ffffff;
+        }
+        
+        .comment-input button {
+            background: none;
+            border: none;
+            color: #ff0000;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        /* ===== RIGHT PANEL ===== */
+        .right-panel {
+            width: 400px;
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 20px;
+            background: #0a0a0a;
+            border-left: 1px solid #ff000020;
+        }
+        
+        .badge-card {
+            background: linear-gradient(135deg, #1a0000, #0a0a0a);
+            border: 1px solid #ff0000;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .badge-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .badge-header i {
+            font-size: 28px;
+            color: #ff0000;
+        }
+        
+        .badge-preview {
+            background: #000;
+            border-radius: 50px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .preview-badge {
+            font-size: 48px;
+        }
+        
+        .badge-animation {
+            display: inline-block;
+        }
+        
+        .badge-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff0000;
+            margin: 10px 0;
+        }
+        
+        .buy-badge-btn {
+            background: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .suggestions h4 {
+            margin-bottom: 15px;
+        }
+        
+        .suggestion-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        
+        .suggestion-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .follow-btn {
+            background: none;
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            padding: 6px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: #0a0a0a;
+            border: 1px solid #ff0000;
+            border-radius: 24px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ff000020;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1200px) {
+            .right-panel {
+                width: 320px;
+            }
+            .main-content {
+                max-width: calc(100% - 600px);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .right-panel {
+                display: none;
+            }
+            .main-content {
+                margin-left: 280px;
+                max-width: calc(100% - 280px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .close-sidebar {
+                display: block;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .main-content {
+                margin-left: 0;
+                max-width: 100%;
+            }
+        }
+        
+        /* Loading */
+        .loading {
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+        
+        .nova-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #ff0000;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* PWA install prompt */
+        .install-prompt {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: #0a0a0a;
+            border: 1px solid #ff0000;
+            border-radius: 16px;
+            padding: 15px;
+            display: none;
+            z-index: 1500;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="nova-logo">
+                <i class="fas fa-star-of-life"></i>
+                <span>NOVA</span>
+            </div>
+            <button class="close-sidebar" id="closeSidebarBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="creator-info">
+            <div class="creator-avatar">
+                <img src="https://ui-avatars.com/api/?background=FF0000&color=fff&name=Mirfayz" alt="Mirfayz Nova Creator">
+                <div class="crown-animation">👑</div>
+            </div>
+            <div class="creator-details">
+                <h4>MirfayzNovaCreator <span class="verified-badge creator-badge">✓</span></h4>
+                <p>⚡ Bosh Creator ⚡</p>
+                <div class="stats">
+                    <span><i class="fas fa-users"></i> 1,234,567</span>
+                    <span><i class="fas fa-video"></i> 5,678</span>
+                    <span><i class="fas fa-crown"></i> Nova Level 100</span>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-page="home"><i class="fas fa-home"></i><span>Bosh sahifa</span></a>
+            <a href="#" class="nav-item" data-page="explore"><i class="fas fa-compass"></i><span>Kashf et</span></a>
+            <a href="#" class="nav-item" data-page="reels"><i class="fas fa-clapperboard"></i><span>Reels</span></a>
+            <a href="#" class="nav-item" data-page="subscribe"><i class="fas fa-bell"></i><span>Obunalar</span></a>
+            <a href="#" class="nav-item" data-page="live"><i class="fas fa-video"></i><span>Jonli efirlar</span></a>
+            <a href="#" class="nav-item" data-page="chat"><i class="fas fa-message"></i><span>Xabarlar</span></a>
+            <a href="#" class="nav-item" data-page="groups"><i class="fas fa-users"></i><span>Guruhlar</span></a>
+            <a href="#" class="nav-item" data-page="trending"><i class="fas fa-chart-line"></i><span>Trendlar</span></a>
+            <a href="#" class="nav-item" data-page="nova-coin"><i class="fas fa-coins"></i><span>Nova Coin</span></a>
+            <a href="#" class="nav-item" data-page="leaderboard"><i class="fas fa-trophy"></i><span>Leaderboard</span></a>
+            <a href="#" class="nav-item" data-page="profile"><i class="fas fa-user"></i><span>Mening profilim</span></a>
+            <a href="#" class="nav-item" data-page="settings"><i class="fas fa-cog"></i><span>Sozlamalar</span></a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="premium-btn" id="buyBadgeSidebarBtn">
+                <i class="fas fa-crown"></i> Animatsiyali galichka (1$/oy)
+            </button>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="top-bar">
+            <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Odamlarni, videolarni, galichkalarni qidirish..." id="searchInput">
+            </div>
+            <div class="top-icons">
+                <i class="fas fa-plus-circle" id="createPostBtn" title="Yangi post"></i>
+                <i class="fas fa-heart" id="notificationsBtn" title="Bildirishnomalar"></i>
+                <i class="fas fa-comment-dots" id="messagesBtn" title="Xabarlar"></i>
+                <i class="fas fa-moon" id="themeToggle" title="Dark/Light mode"></i>
+            </div>
+        </div>
+        
+        <!-- Stories -->
+        <div class="stories-container" id="storiesContainer"></div>
+        
+        <!-- Feed -->
+        <div class="feed-container" id="feedContainer"></div>
+        
+        <div class="loading" id="loadingMore" style="display: none;">
+            <div class="nova-spinner"></div>
+        </div>
+    </div>
+    
+    <!-- Right Panel -->
+    <div class="right-panel">
+        <div class="badge-card" id="badgeCard">
+            <div class="badge-header">
+                <i class="fas fa-crown"></i>
+                <h3>Animatsiyali galichka</h3>
+            </div>
+            <div class="badge-preview">
+                <div class="preview-badge" id="badgePreviewDisplay">
+                    <i class="fas fa-check-circle" style="font-size: 48px; color: #ff0000;"></i>
+                </div>
+            </div>
+            <p class="badge-price">1$ / oy</p>
+            <p style="font-size: 12px; color: #888;">🔥 Olovli | ❄️ Muzli | ⚡ Chaqmoqli</p>
+            <button class="buy-badge-btn" id="buyBadgeRightBtn">
+                <i class="fas fa-shopping-cart"></i> Sotib olish
+            </button>
+            <small style="display: block; margin-top: 10px;">Chek Mirfayzga yuboriladi: +998938138110</small>
+        </div>
+        
+        <div class="suggestions">
+            <h4>Sizga tavsiya qilamiz</h4>
+            <div class="suggestion-list" id="suggestionList"></div>
+        </div>
+        
+        <div class="suggestions" style="margin-top: 20px;">
+            <h4>🔥 Trenddagi hashtaglar</h4>
+            <div id="trendingHashtags" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <span style="color:#ff0000;">#Nova</span>
+                <span style="color:#ff0000;">#MirfayzCreator</span>
+                <span style="color:#ff0000;">#Galichka</span>
+                <span style="color:#ff0000;">#Animatsiya</span>
+            </div>
+        </div>
+        
+        <div class="suggestions" style="margin-top: 20px;">
+            <h4>🌍 Qo'llab-quvvatlanadigan tillar</h4>
+            <p style="font-size: 12px;">O'zbek, Rus, English, Turk, Arab, Xitoy, Yapon, Nemis, Fransuz, Ispan, 200+ til</p>
+        </div>
+    </div>
+</div>
+
+<!-- To'lov modal -->
+<div class="modal" id="paymentModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-crown" style="color:#ff0000;"></i> Animatsiyali galichka</h2>
+            <button class="close-modal" id="closePaymentModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div style="text-align: center; padding: 20px; background: #1a1a1a; border-radius: 16px; margin-bottom: 20px;">
+                <div id="animatedDemo" style="font-size: 64px;">🔥 ✓ 🔥</div>
+                <p>Animatsiya: <span id="selectedAnimation">Olovli</span></p>
+            </div>
+            <p class="price" style="font-size: 28px; text-align: center;">1$ / oy</p>
+            <p class="info-text" style="text-align: center; margin: 15px 0;">To'lov cheki <strong>Mirfayz (+998938138110)</strong> raqamiga tushadi.</p>
+            
+            <div class="payment-methods" style="display: flex; gap: 15px; justify-content: center; margin: 20px 0;">
+                <button class="payment-method" data-method="click" style="background:#1a1a1a; border:1px solid #ff0000; padding:10px 20px; border-radius:10px; cursor:pointer;"><i class="fas fa-credit-card"></i> Click</button>
+                <button class="payment-method" data-method="payme" style="background:#1a1a1a; border:1px solid #ff0000; padding:10px 20px; border-radius:10px; cursor:pointer;"><i class="fas fa-mobile-alt"></i> Payme</button>
+                <button class="payment-method" data-method="visa" style="background:#1a1a1a; border:1px solid #ff0000; padding:10px 20px; border-radius:10px; cursor:pointer;"><i class="fab fa-cc-visa"></i> Visa</button>
+            </div>
+            
+            <div class="payment-form" style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="text" placeholder="Telefon raqam yoki email" id="paymentContact" style="background:#1a1a1a; border:1px solid #ff0000; padding:12px; border-radius:8px; color:#fff;">
+                <button class="confirm-payment" id="confirmPaymentBtn" style="background:#ff0000; color:#fff; border:none; padding:14px; border-radius:30px; font-weight:600; cursor:pointer;">To'lovni amalga oshirish</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tasdiqlash modal (Mirfayz) -->
+<div class="modal" id="verifyModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-shield-alt"></i> Galichkani tasdiqlash</h2>
+            <button class="close-modal" id="closeVerifyModalBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="cheque-info" id="chequeInfoDiv" style="background:#1a1a1a; padding:15px; border-radius:12px; margin-bottom:20px;">
+                <p>💰 To'lov kelib tushdi!</p>
+                <p>Summa: 1$</p>
+                <p>Foydalanuvchi: <span id="chequeUserName">nova_user_123</span></p>
+            </div>
+            <div class="verify-actions" style="display: flex; gap: 15px;">
+                <button class="verify-btn approve" id="approvePaymentBtn" style="flex:1; background:#00cc00; color:#fff; border:none; padding:12px; border-radius:30px; cursor:pointer;"><i class="fas fa-check"></i> Tasdiqlash</button>
+                <button class="verify-btn reject" id="rejectPaymentBtn" style="flex:1; background:#ff0000; color:#fff; border:none; padding:12px; border-radius:30px; cursor:pointer;"><i class="fas fa-times"></i> Rad etish</button>
+            </div>
+            <p class="verify-note" style="margin-top: 15px; font-size:12px; color:#888;">Faqat Mirfayz tasdiqlagandan keyin galichka beriladi!</p>
+        </div>
+    </div>
+</div>
+
+<!-- Install PWA prompt -->
+<div class="install-prompt" id="installPrompt">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div><i class="fas fa-download"></i> Nova ilovasini o'rnatish</div>
+        <div>
+            <button id="installBtn" style="background:#ff0000; border:none; padding:8px 16px; border-radius:20px; color:#fff; margin-right:10px;">O'rnatish</button>
+            <button id="closeInstallBtn" style="background:none; border:none; color:#fff;">✖</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ============================================
+    // NOVA FRONTEND SCRIPT (FAQAT INDEX UCHUN)
+    // ============================================
+    
+    (function() {
+        console.log("🚀 NOVA ilovasi ishga tushdi | Mirfayz Creator");
+        
+        // DOM elementlari
+        const sidebar = document.getElementById('sidebar');
+        const menuBtn = document.getElementById('menuBtn');
+        const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+        const feedContainer = document.getElementById('feedContainer');
+        const storiesContainer = document.getElementById('storiesContainer');
+        const suggestionList = document.getElementById('suggestionList');
+        const buyBadgeBtns = document.querySelectorAll('#buyBadgeSidebarBtn, #buyBadgeRightBtn');
+        const paymentModal = document.getElementById('paymentModal');
+        const verifyModal = document.getElementById('verifyModal');
+        const closePaymentModal = document.getElementById('closePaymentModal');
+        const closeVerifyModalBtn = document.getElementById('closeVerifyModalBtn');
+        const confirmPaymentBtn = document.getElementById('confirmPaymentBtn');
+        const approvePaymentBtn = document.getElementById('approvePaymentBtn');
+        const rejectPaymentBtn = document.getElementById('rejectPaymentBtn');
+        const searchInput = document.getElementById('searchInput');
+        const createPostBtn = document.getElementById('createPostBtn');
+        
+        // State
+        let currentUser = {
+            id: 'user_' + Math.random().toString(36).substr(2, 9),
+            name: 'NovaUser',
+            avatar: 'https://ui-avatars.com/api/?background=FF0000&color=fff&name=User',
+            hasAnimatedBadge: false,
+            badgeType: null
+        };
+        
+        let pendingPayment = null;
+        let posts = [];
+        let stories = [];
+        
+        // ===== FAKE DATA GENERATOR =====
+        function generateMockPosts(count = 20) {
+            const users = [
+                { name: 'MirfayzNovaCreator', avatar: 'https://ui-avatars.com/api/?background=FF0000&color=fff&name=Mirfayz', isCreator: true },
+                { name: 'NovaStar', avatar: 'https://ui-avatars.com/api/?background=000&color=fff&name=Nova', isCreator: false },
+                { name: 'ReelsMaster', avatar: 'https://ui-avatars.com/api/?background=FF0000&color=fff&name=Reels', isCreator: false },
+                { name: 'ContentKing', avatar: 'https://ui-avatars.com/api/?background=000&color=fff&name=King', isCreator: false },
+                { name: 'ViralQueen', avatar: 'https://ui-avatars.com/api/?background=FF0000&color=fff&name=Queen', isCreator: false }
+            ];
+            
+            const captions = [
+                "🔥 Yangi video! #Nova #MirfayzCreator",
+                "Bugun ajoyib kun! ❤️",
+                "Obuna bo'ling! 🚀",
+                "Nova da birinchi postim!",
+                "Animatsiyali galichka olish vaqti keldi! 👑"
+            ];
+            
+            const mediaTypes = ['video', 'image'];
+            
+            for (let i = 0; i < count; i++) {
+                const user = users[i % users.length];
+                const mediaType = mediaTypes[Math.floor(Math.random() * mediaTypes.length)];
+                posts.push({
+                    id: 'post_' + i,
+                    userId: user.name,
+                    userName: user.name,
+                    userAvatar: user.avatar,
+                    isCreator: user.isCreator,
+                    caption: captions[Math.floor(Math.random() * captions.length)],
+                    mediaUrl: mediaType === 'video' 
+                        ? 'https://www.w3schools.com/html/mov_bbb.mp4' 
+                        : 'https://picsum.photos/600/400?random=' + i,
+                    mediaType: mediaType,
+                    likes: Math.floor(Math.random() * 50000),
+                    comments: Math.floor(Math.random() * 1000),
+                    shares: Math.floor(Math.random() * 500),
+                    time: Math.floor(Math.random() * 24) + ' soat oldin',
+                    liked: false
+                });
+            }
+            return posts;
+        }
+        
+        function generateMockStories() {
+            const users = [
+                { name: 'MirfayzNovaCreator', avatar: 'https://ui-avatars.com/api/?background=FF0000&color=fff&name=Mirfayz' },
+                { name: 'NovaOfficial', avatar: 'https://ui-avatars.com/api/?background=000&color=fff&name=Nova' },
+                { name: 'GalichkaKing', avatar: 'https://ui-avatars.com/api/?background=FF0000&color=fff&name=Galichka' },
+                { name: 'Animatsiya', avatar: 'https://ui-avatars.com/api/?background=000&color=fff&name=Anim' },
+                { name: 'ReelsUz', avatar: 'https://ui-avatars.com/api/?background=FF0000&color=fff&name=Reels' }
+            ];
+            return users.map((user, idx) => ({
+                id: idx,
+                name: user.name,
+                avatar: user.avatar,
+                hasStory: true
+            }));
+        }
+        
+        function generateMockSuggestions() {
+            return [
+                { name: 'Instagram_Official', followers: '2.5M', avatar: 'https://ui-avatars.com/api/?background=FF0000&color=fff&name=IG' },
+                { name: 'YouTube_Creator', followers: '1.8M', avatar: 'https://ui-avatars.com/api/?background=000&color=fff&name=YT' },
+                { name: 'Twitter_X', followers: '890K', avatar: 'https://ui-avatars.com/api/?background=FF0000&color=fff&name=X' },
+                { name: 'WhatsApp_News', followers: '1.2M', avatar: 'https://ui-avatars.com/api/?background=000&color=fff&name=WA' },
+                { name: 'TikTok_Star', followers: '3.1M', avatar: 'https://ui-avatars.com/api/?background=FF0000&color=fff&name=TT' }
+            ];
+        }
+        
+        // ===== RENDER FUNCTIONS =====
+        function renderFeed() {
+            if (!feedContainer) return;
+            feedContainer.innerHTML = posts.map(post => `
+                <div class="post-card" data-post-id="${post.id}">
+                    <div class="post-header">
+                        <div class="post-user">
+                            <img src="${post.userAvatar}" class="post-avatar" alt="${post.userName}">
+                            <div class="post-user-info">
+                                <h4>${post.userName} ${post.isCreator ? '<span class="verified-badge" style="color:#ff0000;">✓</span>' : ''}</h4>
+                                <span class="post-time">${post.time}</span>
+                            </div>
+                        </div>
+                        <div class="post-menu"><i class="fas fa-ellipsis-h"></i></div>
+                    </div>
+                    ${post.mediaType === 'video' 
+                        ? `<video src="${post.mediaUrl}" class="post-media" controls poster="https://picsum.photos/600/400?random=${post.id}"></video>`
+                        : `<img src="${post.mediaUrl}" class="post-media" alt="post">`
+                    }
+                    <div class="post-actions">
+                        <button class="action-btn like-btn ${post.liked ? 'liked' : ''}" data-post-id="${post.id}">
+                            <i class="fas fa-heart"></i> <span class="like-count">${post.likes.toLocaleString()}</span>
+                        </button>
+                        <button class="action-btn comment-btn"><i class="fas fa-comment"></i> <span>${post.comments}</span></button>
+                        <button class="action-btn share-btn"><i class="fas fa-share"></i> <span>${post.shares}</span></button>
+                        <button class="action-btn save-btn"><i class="fas fa-bookmark"></i></button>
+                    </div>
+                    <div class="post-caption">
+                        <strong>${post.userName}</strong> ${post.caption}
+                    </div>
+                    <div class="post-comments">${post.comments > 0 ? `Barcha ${post.comments} ta kommentni ko'rish` : 'Komment yozing'}</div>
+                    <div class="comment-input">
+                        <input type="text" placeholder="Komment yozing...">
+                        <button>Yuborish</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Like button event
+            document.querySelectorAll('.like-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const postId = btn.dataset.postId;
+                    const post = posts.find(p => p.id === postId);
+                    if (post) {
+                        post.liked = !post.liked;
+                        post.likes += post.liked ? 1 : -1;
+                        renderFeed();
+                    }
+                });
+            });
+        }
+        
+        function renderStories() {
+            if (!storiesContainer) return;
+            storiesContainer.innerHTML = stories.map(story => `
+                <div class="story-item">
+                    <div class="story-ring">
+                        <img src="${story.avatar}" class="story-img" alt="${story.name}">
+                    </div>
+                    <span class="story-name">${story.name.length > 10 ? story.name.slice(0,8)+'...' : story.name}</span>
+                </div>
+            `).join('');
+        }
+        
+        function renderSuggestions() {
+            if (!suggestionList) return;
+            const suggestions = generateMockSuggestions();
+            suggestionList.innerHTML = suggestions.map(sug => `
+                <div class="suggestion-item">
+                    <div class="suggestion-user">
+                        <img src="${sug.avatar}" style="width:40px; height:40px; border-radius:50%;">
+                        <div>
+                            <div style="font-weight:600;">${sug.name}</div>
+                            <div style="font-size:11px; color:#888;">${sug.followers} obunachi</div>
+                        </div>
+                    </div>
+                    <button class="follow-btn">Obuna</button>
+                </div>
+            `).join('');
+        }
+        
+        // ===== PAYMENT SIMULATION =====
+        buyBadgeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                paymentModal.style.display = 'flex';
+            });
+        });
+        
+        if (closePaymentModal) {
+            closePaymentModal.addEventListener('click', () => {
+                paymentModal.style.display = 'none';
+            });
+        }
+        
+        if (confirmPaymentBtn) {
+            confirmPaymentBtn.addEventListener('click', () => {
+                const contact = document.getElementById('paymentContact')?.value || 'No contact';
+                if (!contact) {
+                    alert('Iltimos, telefon raqam yoki email kiriting!');
+                    return;
+                }
+                
+                // Simulate payment
+                pendingPayment = {
+                    userId: currentUser.id,
+                    userName: currentUser.name,
+                    contact: contact,
+                    amount: 1,
+                    timestamp: new Date().toISOString()
+                };
+                
+                paymentModal.style.display = 'none';
+                
+                // Show verification modal to Mirfayz (in real scenario, this would be a backend push)
+                // For demo, we auto-show verify modal
+                document.getElementById('chequeUserName').innerText = currentUser.name;
+                verifyModal.style.display = 'flex';
+                
+                // In real: send SMS to +998938138110
+                console.log(`📱 Chek yuborildi: +998938138110 | Foydalanuvchi: ${currentUser.name} | 1$`);
+                alert(`To'lov cheki Mirfayzga (+998938138110) yuborildi. Tasdiqlanishi kutilmoqda...`);
+            });
+        }
+        
+        if (closeVerifyModalBtn) {
+            closeVerifyModalBtn.addEventListener('click', () => {
+                verifyModal.style.display = 'none';
+            });
+        }
+        
+        if (approvePaymentBtn) {
+            approvePaymentBtn.addEventListener('click', () => {
+                // Mirfayz tasdiqladi
+                currentUser.hasAnimatedBadge = true;
+                currentUser.badgeType = 'flame';
+                verifyModal.style.display = 'none';
+                
+                // Update badge preview
+                const badgePreview = document.getElementById('badgePreviewDisplay');
+                if (badgePreview) {
+                    badgePreview.innerHTML = '<div style="font-size:48px; animation: pulse 1s infinite;">🔥 ✓ 🔥</div>';
+                }
+                
+                alert('✅ Galichka tasdiqlandi! Endi sizda animatsiyali galichka mavjud.');
+                
+                // Add custom CSS animation for badge
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes flameBadge {
+                        0%,100% { text-shadow: 0 0 5px red, 0 0 10px orange; }
+                        50% { text-shadow: 0 0 20px red, 0 0 30px yellow; }
+                    }
+                    .flame-badge { animation: flameBadge 0.5s infinite; }
+                `;
+                document.head.appendChild(style);
+            });
+        }
+        
+        if (rejectPaymentBtn) {
+            rejectPaymentBtn.addEventListener('click', () => {
+                verifyModal.style.display = 'none';
+                alert('❌ Galichka rad etildi. Pul qaytariladi.');
+            });
+        }
+        
+        // ===== SEARCH =====
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                if (!query) {
+                    renderFeed();
+                    return;
+                }
+                const filtered = posts.filter(p => p.userName.toLowerCase().includes(query) || p.caption.toLowerCase().includes(query));
+                feedContainer.innerHTML = filtered.map(post => `<div class="post-card"><p>${post.userName}: ${post.caption}</p></div>`).join('');
+            });
+        }
+        
+        // ===== CREATE POST (video joylash) =====
+        if (createPostBtn) {
+            createPostBtn.addEventListener('click', () => {
+                alert('Video joylash funksiyasi keyingi faylda to‘liq ishlaydi. Hozircha test post qo‘shamiz.');
+                const newPost = {
+                    id: 'post_' + Date.now(),
+                    userId: currentUser.name,
+                    userName: currentUser.name,
+                    userAvatar: currentUser.avatar,
+                    isCreator: false,
+                    caption: 'Yangi video! #Nova',
+                    mediaUrl: 'https://picsum.photos/600/400?random=' + Date.now(),
+                    mediaType: 'image',
+                    likes: 0,
+                    comments: 0,
+                    shares: 0,
+                    time: 'hoziroq',
+                    liked: false
+                };
+                posts.unshift(newPost);
+                renderFeed();
+            });
+        }
+        
+        // ===== SIDEBAR TOGGLE =====
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+            });
+        }
+        if (closeSidebarBtn) {
+            closeSidebarBtn.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+            });
+        }
+        
+        // ===== THEME TOGGLE (Qora/Oq/Qizil) =====
+        const themeToggle = document.getElementById('themeToggle');
+        let isDark = true;
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                isDark = !isDark;
+                if (isDark) {
+                    document.body.style.background = '#000';
+                    document.body.style.color = '#fff';
+                    themeToggle.classList.remove('fa-sun');
+                    themeToggle.classList.add('fa-moon');
+                } else {
+                    document.body.style.background = '#fff';
+                    document.body.style.color = '#000';
+                    themeToggle.classList.remove('fa-moon');
+                    themeToggle.classList.add('fa-sun');
+                }
+            });
+        }
+        
+        // ===== PWA INSTALL =====
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installPrompt').style.display = 'block';
+        });
+        
+        document.getElementById('installBtn')?.addEventListener('click', () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => {
+                    deferredPrompt = null;
+                    document.getElementById('installPrompt').style.display = 'none';
+                });
+            }
+        });
+        
+        document.getElementById('closeInstallBtn')?.addEventListener('click', () => {
+            document.getElementById('installPrompt').style.display = 'none';
+        });
+        
+        // ===== INIT =====
+        function init() {
+            posts = generateMockPosts(25);
+            stories = generateMockStories();
+            renderFeed();
+            renderStories();
+            renderSuggestions();
+        }
+        
+        init();
+        
+        // Click outside modal to close
+        window.onclick = (e) => {
+            if (e.target === paymentModal) paymentModal.style.display = 'none';
+            if (e.target === verifyModal) verifyModal.style.display = 'none';
+        };
+        
+    })();
+</script>
+
+<!-- Service Worker for PWA -->
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').then(reg => {
+            console.log('Service Worker registered:', reg);
+        }).catch(err => {
+            console.log('Service Worker failed:', err);
+        });
+    }
+</script>
+
+</body>
+</html>
